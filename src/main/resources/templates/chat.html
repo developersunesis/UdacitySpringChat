@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Surface</title>
+</head>
+<body>
+<div th:each="msg : ${messages}">
+    <span th:text="${msg.username}"></span> :
+    <span th:text="${msg.messageText}"></span>
+</div>
+<div th:unless="!${#lists.isEmpty(messages)}">
+    No Messages
+</div>
+<br/>
+<form th:action="@{/chat}" method="post" th:object="${messageForm}">
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username" th:field="*{username}">
+    <label for="messageText">Message Text:</label>
+    <input id="messageText" type="text" name="messageText" th:field="*{messageText}">
+    <label for="messageType">Message Type: </label>
+    <select id="messageType" th:field="*{messageType}">
+        <option th:each="type : ${messageTypes}" th:value="${type}" th:text="${type}"></option>
+    </select>
+    <input type="submit">
+</form>
+</body>
+</html>
