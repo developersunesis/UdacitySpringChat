@@ -1,6 +1,8 @@
-package lesson4.demo;
+package lesson4.demo.models;
 
 public class MessageForm {
+
+    private int messageId;
 
     private String username;
 
@@ -30,5 +32,13 @@ public class MessageForm {
 
     public void setMessageType(String messageType) {
         this.messageType = messageType;
+    }
+
+    public int getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(int messageId) {
+        this.messageId = messageId;
     }
 }

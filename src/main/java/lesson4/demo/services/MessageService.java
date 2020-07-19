@@ -1,5 +1,7 @@
-package lesson4.demo;
+package lesson4.demo.services;
 
+import lesson4.demo.mappers.MessageMapper;
+import lesson4.demo.models.MessageForm;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +12,12 @@ import java.util.List;
 public class MessageService {
 
     private List<MessageForm> messageFormList;
+
+    private final MessageMapper messageMapper;
+
+    public MessageService(MessageMapper messageMapper){
+        this.messageMapper = messageMapper;
+    }
 
     @PostConstruct
     public void postConstruct() {
@@ -24,9 +32,10 @@ public class MessageService {
         }
 
         messageFormList.add(messageForm);
+        messageMapper.addMessage(messageForm);
     }
 
-    public List<MessageForm> getMessageFormList(){
-        return messageFormList;
+    public List<MessageForm> getMessageFormList(String username){
+        return messageMapper.getMessages(username);
     }
 }

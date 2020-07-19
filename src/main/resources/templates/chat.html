@@ -14,8 +14,6 @@
 </div>
 <br/>
 <form th:action="@{/chat}" method="post" th:object="${messageForm}">
-    <label for="username">Username:</label>
-    <input id="username" type="text" name="username" th:field="*{username}">
     <label for="messageText">Message Text:</label>
     <input id="messageText" type="text" name="messageText" th:field="*{messageText}">
     <label for="messageType">Message Type: </label>
