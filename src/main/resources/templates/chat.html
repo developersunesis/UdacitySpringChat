@@ -9,7 +9,7 @@
     <span th:text="${msg.username}"></span> :
     <span th:text="${msg.messageText}"></span>
 </div>
-<div th:unless="!${#lists.isEmpty(messages)}">
+<div id="no-messages" th:unless="!${#lists.isEmpty(messages)}">
     No Messages
 </div>
 <br/>
